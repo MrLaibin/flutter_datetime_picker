@@ -120,7 +120,7 @@ class DatePicker {
   }
 
   ///
-  /// Display date&time picker bottom sheet.
+  /// Display date&time picker bottom sheet.1
   ///
   static Future<DateTime?> showDateTimePicker(
     BuildContext context, {
@@ -447,23 +447,34 @@ class _DatePickerState extends State<_DatePickerComponent> {
               style: theme.itemStyle,
             ),
             Container(
-              child: widget.pickerModel.layoutProportions()[2] > 0
-                  ? _renderColumnView(
-                      ValueKey(widget.pickerModel.currentMiddleIndex() * 100 +
-                          widget.pickerModel.currentLeftIndex()),
-                      theme,
-                      widget.pickerModel.rightStringAtIndex,
-                      rightScrollCtrl,
-                      widget.pickerModel.layoutProportions()[2], (index) {
-                      widget.pickerModel.setRightIndex(index);
-                    }, (index) {
-                      setState(() {
-                        refreshScrollOffset();
-                        _notifyDateChanged();
-                      });
-                    })
-                  : null,
+              height: theme.itemHeight,
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "00",
+                style: theme.itemStyle,
+                textAlign: TextAlign.start,
+              ),
             ),
+            // 原代码
+            // Container(
+            //   child: widget.pickerModel.layoutProportions()[2] > 0
+            //       ? _renderColumnView(
+            //           ValueKey(widget.pickerModel.currentMiddleIndex() * 100 +
+            //               widget.pickerModel.currentLeftIndex()),
+            //           theme,
+            //           widget.pickerModel.rightStringAtIndex,
+            //           rightScrollCtrl,
+            //           widget.pickerModel.layoutProportions()[2], (index) {
+            //           widget.pickerModel.setRightIndex(index);
+            //         }, (index) {
+            //           setState(() {
+            //             refreshScrollOffset();
+            //             _notifyDateChanged();
+            //           });
+            //         })
+            //       : null,
+            // ),
           ],
         ),
       ),
